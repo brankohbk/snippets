@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Objetos</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/css.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body class="bg-light d-flex flex-column justify-content-between">
+  <nav class="navbar  navbar-light bg-orange navbar-expand-md">
+    <a class="navbar-brand mr-4" href="#">
+      <img id="logo" src="img/logo.png" alt="logo">
+      <h1 class="text-white d-inline ">Objetos</h1>
+      <span class="d-none d-md-inline"> | Breve introducción </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <div class="collapse navbar-collapse " id="navbarToggler">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Refresh <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#references">References</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="m-0 flex-grow-1 d-flex align-items-center justify-content-center">
+    <div id="playfield" class="col-12 d-flex justify-content-between flex-wrap">
+
+      <!-- <form class="form-inline d-flex flex-shrink border">
+        <label class="sr-only" for="trasvasar${objeto.nombre}">Preference</label>
+        <div class="input-group input-group-sm ">
+          <select class="custom-select " id="trasvasar${objeto.nombre}">
+          <option selected>Otro envase</option>
+          <option >Otro envase</option>
+          <option >Otro envase</option>
+          <option >Otro envase</option>
+          </select>
+        </div>
+        <label class="sr-only" for="inlineFormInputGroupUsername2">Mililitros</label>
+        <div class="input-group input-group-sm col-4">
+          <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Mililitros">
+          <div class="input-group-append">
+            <span class="input-group-text">ml</span>
+          </div>
+        </div>
+        <button onclick="" class="btn btn-sm btn-purple">Trasvasar</button>
+      </form> -->
+
+
+
+    </div>
+
+
+  </main>
+
+  <footer class="bg-orange text-white text-center p-3">
+    <span class="">Branko Haberkon - &#x1F1E6;&#x1F1F7; - &copy; 2020</span>
+  </footer>
+
+
+
+
+  <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="referencesLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="referencesLabel">References</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus delectus nesciunt velit expedita, doloribus atque ipsum nobis tenetur accusamus ex ipsam, consectetur corporis labore, voluptate et! Doloremque dignissimos facilis esse.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="playAgain" type="button" class="btn btn-purple  continue" data-dismiss="modal" onclick="location.reload()">Refresh</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="js/jquery-3.3.1.slim.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/objetos.js"></script>
+</body>
+
+</html>

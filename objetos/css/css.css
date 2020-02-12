@@ -6,7 +6,9 @@
   src: url("wayoshi.ttf");
 } */
 
- :root {}
+* {
+  font-family: 'Roboto', sans-serif;
+}
 
 .bg-teal {
   background-color: var(--teal);
@@ -41,7 +43,6 @@ h1 {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
   min-height: 100vh;
   max-height: 100%;
   min-height: calc(var(--vh, 1vh) * 100);
@@ -61,22 +62,24 @@ h1 .text-linethrough {
   font-size: 0.75em;
 }
 
-#start {
-  height: 30vh;
-}
-
-#start button {
-  width: 30%;
-  height: 30%;
-}
-
 #playfield {
-  background-color: rgba(0, 0, 0, 0.466);
+  background-color: rgba(39, 157, 253, 0.11);
+  /* border: 1px double yellow; */
 }
 
 .modal-body img {
   width: 100px;
   height: 100px;
+}
+
+li span {
+  color: gold;
+  font-family: 'Lemonada', cursive;
+}
+
+.bg-info-opacity {
+  background-color: #17a3b825;
+  /* border: 1px solid white; */
 }
 
 
@@ -86,8 +89,42 @@ h1 .text-linethrough {
 /* PROGRESS BAR STYLES */
 
 progress {
+  transform-origin: 100%;
+  transform: translateX(-50%) rotateZ(-90deg);
+  background-color: var(--gray);
+  border: 1px solid var(--orange);
+  width: 200px;
   height: 35px;
-  width: 90%
-  /* transform: rotateZ(-90deg); */
-  /* transform-origin: 0%; */
+  border-radius: 9px;
+  z-index: 99;
+}
+
+progress::-webkit-progress-bar {
+  background-color: var(--gray);
+  border: 1px solid var(--orange);
+  border-radius: 9px;
+}
+
+progress::-webkit-progress-value {
+  background: #9CECFB;
+  background: -moz-linear-gradient(top, #9CECFB 0%, #0052D4 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9CECFB), color-stop(100%, #0052D4));
+  background: -webkit-linear-gradient(top, #9CECFB 0%, #0052D4 100%);
+  background: -o-linear-gradient(top, #9CECFB 0%, #0052D4 100%);
+  background: -ms-linear-gradient(top, #9CECFB 0%, #0052D4 100%);
+  background: linear-gradient(to bottom, #9CECFB 0%, #0052D4 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#9CECFB', endColorstr='#0052D4', GradientType=0);
+  border-radius: 9px;
+}
+
+progress::-moz-progress-bar {
+  background: #9CECFB;
+  background: -moz-linear-gradient(top, #9CECFB 0%, #0052D4 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9CECFB), color-stop(100%, #0052D4));
+  background: -webkit-linear-gradient(top, #9CECFB 0%, #0052D4 100%);
+  background: -o-linear-gradient(top, #9CECFB 0%, #0052D4 100%);
+  background: -ms-linear-gradient(top, #9CECFB 0%, #0052D4 100%);
+  background: linear-gradient(to bottom, #9CECFB 0%, #0052D4 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#9CECFB', endColorstr='#0052D4', GradientType=0);
+  border-radius: 9px;
 }

@@ -20,14 +20,16 @@ vaso = {
     llenar: function () {
         this.capacidadLibre = 0
     },
-    cargar: function (cantidad) {
+    cargar: function (cant) {
+        cantidad = parseInt(cant)
         if (this.capacidadLibre >= cantidad) {
             this.capacidadLibre = this.capacidadLibre - cantidad
         } else {
             return `No hay capacidad libre suficiente para contener esa cantidad.\nSi agregamos ${cantidad} ml teniendo ${this.capacidadLibre} ml libres van a sobrar ${(this.capacidadTotal - cantidad) * -1} ml`
         }
     },
-    descargar: function (cantidad) {
+    descargar: function (cant) {
+        cantidad = parseInt(cant)
         cantidad < this.capacidadTotal ?
             this.capacidadLibre = this.capacidadLibre + cantidad
             : this.capacidadLibre = this.capacidadTotal
@@ -38,9 +40,18 @@ vaso = {
     getCapacidadTotal: function () {
         return this.capacidadTotal + " ml"
     },
+    trasvasar : function (otroEnvase, cantidad) {
+        if (this.capacidadTotal - this.capacidadLibre < cantidad) { return "No hay suficiente líquido para trasvasar" }
+        else if (window[otroEnvase].capacidadLibre <= cantidad) { return `No hay capacidad libre suficiente en el otro envase` }
+        else {
+            this.descargar(cantidad);
+            window[otroEnvase].cargar(cantidad);
+        }
+    }
 }
 
 vaso.setCapacidadTotal(250)
+objetos.push(vaso)
 
 // Otra forma de instanciar objetos: usar un constructor.
 // Nombramos una función con un sustantivo más genérico y 
@@ -58,7 +69,9 @@ function Envase(nombre, capacidadTotal) {
     this.llenar = function () {
         this.capacidadLibre = 0
     }
-    this.cargar = function (cantidad) {
+    this.cargar = function (cant) {
+        cantidad = parseInt(cant)
+
         if (this.capacidadLibre >= cantidad) {
 
             this.capacidadLibre = this.capacidadLibre - cantidad
@@ -66,8 +79,9 @@ function Envase(nombre, capacidadTotal) {
             return `No hay capacidad libre suficiente para contener esa cantidad.\nSi agregamos ${cantidad} ml teniendo ${this.capacidadLibre} ml libres van a sobrar ${(this.capacidadTotal - cantidad) * -1} ml`
         }
     }
-    this.descargar = function (cantidad) {
-        (this.capacidadLibre + cantidad <= this.capacidadTotal)?
+    this.descargar = function (cant) {
+        cantidad = parseInt(cant);
+        (this.capacidadLibre + parseInt(cant) <= this.capacidadTotal) ?
             this.capacidadLibre = this.capacidadLibre + cantidad
             : this.capacidadLibre = this.capacidadTotal
     }
@@ -80,78 +94,17 @@ function Envase(nombre, capacidadTotal) {
     // Creamos un método para interactuar con otros objetos.
     this.trasvasar = function (otroEnvase, cantidad) {
         if (this.capacidadTotal - this.capacidadLibre < cantidad) { return "No hay suficiente líquido para trasvasar" }
-        else if (otroEnvase.capacidadLibre <= cantidad) { return `No hay capacidad libre suficiente en el otro envase` }
+        else if (window[otroEnvase].capacidadLibre < cantidad) { return `No hay capacidad libre suficiente en el otro envase` }
         else {
             this.descargar(cantidad);
-            otroEnvase.cargar(cantidad);
+            window[otroEnvase].cargar(cantidad);
         }
     }
 }
 
 // "botella", "taza" y "pinta" son objetos instanciados a partir del constructor "envase".
 // En este caso puntual, al constructor le pasamos como parámetro la capacidad total del objeto.
+taza = new Envase("taza", 300)
+pinta = new Envase("pinta", 480)
 botella = new Envase("botella", 1000)
-taza = new Envase("taza", 320)
-pinta = new Envase("pinta", 470)
-
-objetos.push(botella, taza, pinta, vaso)
-
-function dibujarEnvases() {
-    const container = document.getElementById("playfield")
-    objetos.forEach(objeto => {
-        const controles = document.createElement("DIV");
-        controles.classList = "d-flex flex-column text-center justify-content-between p-1 m-1 border"
-        controles.innerHTML = `
-        <button class="btn btn-sm btn-primary my-1" onclick='${objeto.nombre}.llenar()'>Llenar</button>
-        <button class="btn btn-sm btn-danger my-1" onclick='${objeto.nombre}.vaciar()'>Vaciar</button>
-        <button class="btn btn-sm btn-success my-1" onclick='${objeto.nombre}.cargar(10)'>Cargar 10ml</button>
-        <button class="btn btn-sm btn-warning my-1" onclick='${objeto.nombre}.descargar(10)'>Volcar 10ml</button>
-        <ul class="list-group">
-            <li class="list-group-item bg-dark text-light">Nombre: <span id='${objeto.nombre}Nombre'></span>.</li class="list-group-item">
-            <li class="list-group-item bg-dark text-light">Capacidad Total: <span id='${objeto.nombre}CapacidadTotal'></span>ml.</li>
-            <li class="list-group-item bg-dark text-light">Capacidad Disponible: <span id='${objeto.nombre}CapacidadLibre'></span>ml.</li>
-            <li class="list-group-item bg-dark text-light">Volumen utilizado: <span id='${objeto.nombre}VolumenUtilizado'></span>ml.</li>
-        </ul>
-        
-
-        `;
-
-        const envase = document.createElement("PROGRESS");
-        envase.setAttribute("id", objeto.nombre)
-        envase.setAttribute("value", objeto.capacidadTotal - objeto.capacidadLibre);
-        envase.setAttribute("max", objeto.capacidadTotal);
-        // envase.setAttribute("style", `width:${objeto.capacidadTotal /4}px;`) VERIFICAR EN EL CSS
-        envase.classList = "mx-auto"
-
-        controles.insertBefore(envase, controles.childNodes[0]);
-        container.appendChild(controles);
-    })
-}
-
-function actualizarEnvases() {
-    const envases = document.querySelectorAll("progress")
-    envases.forEach(envase => {
-        objetos.forEach(objeto => {
-            const nombre = document.querySelector(`#${objeto.nombre}Nombre`)
-            const capTot = document.querySelector(`#${objeto.nombre}CapacidadTotal`)
-            const capLib = document.querySelector(`#${objeto.nombre}CapacidadLibre`)
-            const volUti = document.querySelector(`#${objeto.nombre}VolumenUtilizado`)
-
-            if (objeto.nombre == envase.id) {
-                envase.value = objeto.capacidadTotal - objeto.capacidadLibre
-                nombre.innerText=objeto.nombre
-                capTot.innerText=objeto.capacidadTotal
-                capLib.innerText=objeto.capacidadLibre
-                volUti.innerText=objeto.capacidadTotal - objeto.capacidadLibre
-            }
-        }
-        )
-    }
-
-    )
-}
-
-
-
-dibujarEnvases()
-setInterval(actualizarEnvases, 100)
+objetos.push(botella,taza,pinta)

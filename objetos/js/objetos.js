@@ -41,6 +41,8 @@ vaso = {
         return this.capacidadTotal + " ml"
     },
     trasvasar : function (otroEnvase, cantidad) {
+        // Como el value del dropdown es un string, tengo que buscar dentro
+        // del objeto window un objeto con el nombre que coincida con ese string.
         if (this.capacidadTotal - this.capacidadLibre < cantidad) { return "No hay suficiente líquido para trasvasar" }
         else if (window[otroEnvase].capacidadLibre <= cantidad) { return `No hay capacidad libre suficiente en el otro envase` }
         else {

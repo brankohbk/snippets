@@ -17,7 +17,7 @@ function crearEnvase(nombre, volumen) {
   objetos.forEach(objeto => objeto.nombre == nombre ? exist = true : null)
   if (!exist) {
     window[nombre] = new Envase(nombre, volumen)
-    objetos.push(window[nombre])
+    objetos.unshift(window[nombre])
   } else {
     alert(`Ya existe un envase con el nombre "${nombre}". Elija otro.`)
   }
@@ -28,7 +28,7 @@ function dibujarEnvases() {
   container.innerHTML = ""
   objetos.forEach(objeto => {
     const controles = document.createElement("DIV");
-    controles.classList = "d-flex flex text-center justify-content-between p-1 m-1 my-md-4 border"
+    controles.classList = "envase d-flex flex text-center justify-content-between p-1 m-1 my-md-4 border"
     controles.innerHTML = `
     <div class="col-9 d-flex flex-column text-center justify-content-between p-1 m-1 "> 
       <div class="row d-inline">        
@@ -36,13 +36,13 @@ function dibujarEnvases() {
       <button class="btn  btn-danger my-1 col-5" onclick='${objeto.nombre}.vaciar()'>Vaciar</button>
       </div>
       <div class="row d-inline">
-      <button class="btn d-inline  btn-success my-1 col-5" onclick='${objeto.nombre}.cargar(10)'>Cargar 10ml</button>
-      <button class="btn  btn-warning my-1 col-5" onclick='${objeto.nombre}.descargar(10)'>Descargar 10ml</button>
+      <button class="btn btn-success my-1 col-5" onclick='${objeto.nombre}.cargar(10)'>Cargar 10ml</button>
+      <button class="btn btn-warning my-1 col-5" onclick='${objeto.nombre}.descargar(10)'>Descargar 10ml</button>
       </div>
       <ul class="list-group">
           <li class="list-group-item bg-dark text-light">Nombre: <span id='${objeto.nombre}Nombre'></span>.</li class="list-group-item">
           <li class="list-group-item bg-dark text-light">Capacidad Total: <span id='${objeto.nombre}CapacidadTotal'></span>ml.</li>
-          <li class="list-group-item bg-dark text-light">Capacidad Disponible: <span id='${objeto.nombre}CapacidadLibre'></span>ml.</li>
+          <li class="list-group-item bg-dark text-light">Capacidad Libre: <span id='${objeto.nombre}CapacidadLibre'></span>ml.</li>
           <li class="list-group-item bg-dark text-light">Volumen utilizado: <span id='${objeto.nombre}VolumenUtilizado'></span>ml.</li>
       </ul>
       <div class='row d-inline'>
@@ -113,9 +113,8 @@ function actualizarEnvases() {
 document.querySelectorAll("button")
   .forEach(button =>
     button.addEventListener("click", function (event) {
-      event.preventDefault()
-      dibujarEnvases()
-      actualizarEnvases()
+      event.preventDefault();
+      dibujarEnvases();
     }
     )
   )

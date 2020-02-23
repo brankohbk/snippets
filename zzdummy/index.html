@@ -38,6 +38,7 @@
   </nav>
 
   <main class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
+
     <form class="form-inline bg-info-opacity d-flex col-12 align-items-center justify-content-center my-3">
       <div class="input-group input-group-sm col-md-4 col-12">
         <label class="sr-only" for="nombre">Nombre</label>
@@ -68,17 +69,25 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="referencesLabel">References</h5>
+          <h5 class="modal-title" id="referencesLabel">References | <small>2020-02-14</small> </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus delectus nesciunt velit expedita, doloribus atque ipsum nobis tenetur accusamus ex ipsam, consectetur corporis labore, voluptate et! Doloremque dignissimos facilis esse.
+          <p>En este ejemplo vemos cómo se pueden instanciar objetos mediante un constructor.</p>
+          <p>También generamos interacciones entre ellos mediante métodos.</p>
+          <p>
+            Inicialmente se cuenta con 4 envases. Cada uno tiene un conjunto de métodos (llenar, vaciar, cargar, descargar y trasvasar) que modifican los valores de las propiedades propias (valga la redundancia) sin alterar las propiedades de los demás. <br>            Mediante el método trasvasar podemos pasar una determinada cantidad de contenido a otro objeto.
+          </p>
+          <p>
+            Se pueden generar un nuevo envase "vacío" mediante el formulario que se encuentra en la parte superior de la página, el cual tendrá las mismas propiedades y métodos que los envases ya generados.
+          </p>
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="playAgain" type="button" class="btn btn-purple  continue" data-dismiss="modal" onclick="location.reload()">Refresh</button>
+          <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+          <!-- <button id="playAgain" type="button" class="btn btn-purple  continue" data-dismiss="modal" onclick="location.reload()">Refresh</button> -->
         </div>
       </div>
     </div>

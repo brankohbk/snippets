@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="Branko haberkon - brankoh@restpoint.com.ar">
+  <title>Objetos</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css?family=Lemonada|Permanent+Marker|Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/css.css">
+</head>
+
+<body class="bg-light d-flex flex-column justify-content-between">
+  <nav class="navbar  navbar-light bg-orange navbar-expand-md">
+    <a class="navbar-brand mr-4" href="#">
+      <img id="logo" class="d-none d-sm-inline" src="img/logo.png" alt="logo">
+      <img id="logo" class="d-sm-none" src="img/isologo.png" alt="logo">
+      <h1 class="text-white d-inline ">Objetos</h1>
+      <span class="d-none d-md-inline"> | Breve introducción </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    <div class="collapse navbar-collapse " id="navbarToggler">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Refresh <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#references">References</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
+    <form class="form-inline bg-info-opacity d-flex col-12 align-items-center justify-content-center my-3">
+      <div class="input-group input-group-sm col-md-4 col-12">
+        <label class="sr-only" for="nombre">Nombre</label>
+        <input type="text" class="form-control input-group-sm  mt-2 mb-1 my-md-2" id="nombre" placeholder="Vaso, taza, botella, etc">
+      </div>
+      <label class="sr-only" for="volumen">Mililitros</label>
+      <div class="input-group input-group-sm col-md-3 col-12 m-1 my-md-2">
+        <input type="text" class="form-control" id="volumen" placeholder="Mililitros">
+        <div class="input-group-append">
+          <span class="input-group-text">ml</span>
+        </div>
+      </div>
+      <button class="btn btn-sm btn-purple mt-1 mb-2 my-md-2" onclick="crearEnvase(nombre.value,volumen.value)">Crear Envase</button>
+    </form>
+    <div id="playfield" class="col-12 d-flex justify-content-around flex-wrap">
+
+    </div>
+  </main>
+
+  <footer class="bg-orange text-white text-center p-3">
+    <span class="">Branko Haberkon - &#x1F1E6;&#x1F1F7; - &copy; 2020</span>
+  </footer>
+
+
+
+
+  <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="referencesLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="referencesLabel">References | <small>2020-02-14</small> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>En este ejemplo vemos cómo se pueden instanciar objetos mediante un constructor.</p>
+          <p>También generamos interacciones entre ellos mediante métodos.</p>
+          <p>
+            Inicialmente se cuenta con 4 envases. Cada uno tiene un conjunto de métodos (llenar, vaciar, cargar, descargar y trasvasar) que modifican los valores de las propiedades propias (valga la redundancia) sin alterar las propiedades de los demás. <br>            Mediante el método trasvasar podemos pasar una determinada cantidad de contenido a otro objeto.
+          </p>
+          <p>
+            Se pueden generar un nuevo envase "vacío" mediante el formulario que se encuentra en la parte superior de la página, el cual tendrá las mismas propiedades y métodos que los envases ya generados.
+          </p>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+          <!-- <button id="playAgain" type="button" class="btn btn-purple  continue" data-dismiss="modal" onclick="location.reload()">Refresh</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="js/jquery-3.3.1.slim.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- <script src="js/objetosStart.js"></script> -->
+  <script src="js/objetos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

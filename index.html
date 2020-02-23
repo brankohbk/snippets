@@ -1,16 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <meta name="author" content="Branko haberkon - brankoh@restpoint.com.ar">
+  <title>Ejemplos</title>
+  <link href="https://fonts.googleapis.com/css?family=Lemonada|Permanent+Marker|Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/css.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
-<body>
-  <a href="objetos/index.html">EJEMPLO DE OBJETOS</a>
+<body class="bg-light d-flex flex-column justify-content-between">
+  <nav class="navbar  navbar-light bg-orange navbar-expand-md">
+    <a class="navbar-brand mr-4" href="#">
+      <img id="logo" class="d-none d-sm-inline" src="img/logo.png" alt="logo">
+      <img id="logo" class="d-sm-none" src="img/isologo.png" alt="logo">
+      <h1 class="text-white d-inline ">Snippets</h1>
+      <span class="d-none d-lg-inline"> | Ejemplos para explicaciones en clase.</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+    <div class="collapse navbar-collapse " id="navbarToggler">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="index.html">Refresh <span class="sr-only">(current)</span></a>
+        </li> -->
+        <li class="nav-item active">
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#references">References</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
+
+    <div id="playfield" class="col-12 d-flex justify-content-around flex-wrap py-2">
+
+      <div class="flip-card my-2">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" id="objetosCard">
+            <!-- <img src="img/object.gif" alt="Avatar" style="width:300px;height:300px;"> -->
+            <h4>.objetos</h4>
+          </div>
+          <div class="flip-card-back">
+            <h1>Objetos.</h1>
+            <p>Ejemplo de cómo representar objetos de la vida real mediante código</p>
+            <a href="./microsites/objetos/index.html" class="btn btn-purple mb-0" target="_blank" rel="noopener noreferrer">Ir al micrositio</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card my-2">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" id="canvasCard">
+            <!-- <img src="img/object.gif" alt="Avatar" style="width:300px;height:300px;"> -->
+            <h4>.canvas</h4>
+          </div>
+          <div class="flip-card-back">
+            <h1>HTML Canvas.</h1>
+            <p>Cómo utilizar el elemento HTML &lt;canvas&gt; para desarrollar un pequeño videojuego.
+            </p>
+            <a href="./microsites/htmlcanvas/index.html" class="btn btn-purple mb-0" target="_blank" rel="noopener noreferrer">Ir al micrositio</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card my-2">
+        <div class="flip-card-inner">
+          <div class="flip-card-front" id="mediaQueriesCard">
+            <!-- <img src="img/object.gif" alt="Avatar" style="width:300px;height:300px;"> -->
+            <h4>.media query</h4>
+          </div>
+          <div class="flip-card-back">
+            <h1>Media Queries</h1>
+            <p>Introducción al desarrollo responsive.</p>
+            <p>Los @media se utilizan en CSS para consultar cómo es el medio que utiliza el usuario para interactuar con nuestro sitio.</p>
+            <a href="./microsites/mediaqueries/index.html" class="btn btn-purple mb-0" target="_blank" rel="noopener noreferrer">Ir al micrositio</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-orange text-white text-center p-3 sticky">
+    <a href="https://github.com/brankohbk" target="_blank">Branko Haberkon - &#x1F1E6;&#x1F1F7; - &copy; 2020</a href="https://github.com/brankohbk">
+  </footer>
+
+
+
+
+  <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="referencesLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="referencesLabel">References | <small>ver.20200223</small> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Catálogo con ejemplos para explicar temas puntuales en clases de frontend.</p>          
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery-3.3.1.slim.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/vue.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>

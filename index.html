@@ -13,85 +13,39 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
-<body class="bg-light d-flex flex-column justify-content-between">
-  <nav class="navbar  navbar-light bg-orange navbar-expand-md">
-    <a class="navbar-brand mr-4" href="#">
-      <img id="logo" class="d-none d-sm-inline" src="img/logo.png" alt="logo">
-      <img id="logo" class="d-sm-none" src="img/isologo.png" alt="logo">
-      <h1 class="text-white d-inline ">Snippets</h1>
-      <span class="d-none d-lg-inline"> | Ejemplos para explicaciones en clase.</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+<body>
+  <div id="app" class="bg-light d-flex flex-column justify-content-between">
+    <nav class="navbar  navbar-light bg-orange navbar-expand-md">
+      <a class="navbar-brand mr-4" href="">
+        <img id="logo" class="d-none d-sm-inline" src="img/logo.png" alt="logo">
+        <img id="logo" class="d-sm-none" src="img/isologo.png" alt="logo">
+        <h1 class="text-white d-inline ">Snippets</h1>
+        <span class="d-none d-lg-inline"> | Ejemplos para explicaciones en clase.</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-    <div class="collapse navbar-collapse " id="navbarToggler">
-      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="index.html">Refresh <span class="sr-only">(current)</span></a>
-        </li> -->
-        <li class="nav-item active">
-          <a class="nav-link" href="#" data-toggle="modal" data-target="#references">References</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <main class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
-
-    <div id="playfield" class="col-12 d-flex justify-content-around flex-wrap py-2">
-
-      <div class="flip-card my-2">
-        <div class="flip-card-inner">
-          <div class="flip-card-front" id="objetosCard">
-            <!-- <img src="img/object.gif" alt="Avatar" style="width:300px;height:300px;"> -->
-            <h4>.objetos</h4>
-          </div>
-          <div class="flip-card-back">
-            <h1>Objetos.</h1>
-            <p>Ejemplo de cómo representar objetos de la vida real mediante código</p>
-            <a href="./microsites/objetos/index.html" class="btn btn-purple mb-0" target="_blank" rel="noopener noreferrer">Ir al micrositio</a>
-          </div>
-        </div>
+      <div class="collapse navbar-collapse " id="navbarToggler">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#references">References</a>
+          </li>
+        </ul>
       </div>
+    </nav>
 
-      <div class="flip-card my-2">
-        <div class="flip-card-inner">
-          <div class="flip-card-front" id="canvasCard">
-            <!-- <img src="img/object.gif" alt="Avatar" style="width:300px;height:300px;"> -->
-            <h4>.canvas</h4>
-          </div>
-          <div class="flip-card-back">
-            <h1>HTML Canvas.</h1>
-            <p>Cómo utilizar el elemento HTML &lt;canvas&gt; para desarrollar un pequeño videojuego.
-            </p>
-            <a href="./microsites/htmlcanvas/index.html" class="btn btn-purple mb-0" target="_blank" rel="noopener noreferrer">Ir al micrositio</a>
-          </div>
-        </div>
-      </div>
+    <main class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
 
-      <div class="flip-card my-2">
-        <div class="flip-card-inner">
-          <div class="flip-card-front" id="mediaQueriesCard">
-            <!-- <img src="img/object.gif" alt="Avatar" style="width:300px;height:300px;"> -->
-            <h4>.media query</h4>
-          </div>
-          <div class="flip-card-back">
-            <h1>Media Queries</h1>
-            <p>Introducción al desarrollo responsive.</p>
-            <p>Los @media se utilizan en CSS para consultar cómo es el medio que utiliza el usuario para interactuar con nuestro sitio.</p>
-            <a href="./microsites/mediaqueries/index.html" class="btn btn-purple mb-0" target="_blank" rel="noopener noreferrer">Ir al micrositio</a>
-          </div>
-        </div>
-      </div>
+      <component is="cards" :array="modulos.modulos"></component>
+      <component is="quote" :quote="qod"></component>
 
-    </div>
-  </main>
+    </main>
 
-  <footer class="bg-orange text-white text-center p-3 sticky">
-    <a href="https://github.com/brankohbk" target="_blank">Branko Haberkon - &#x1F1E6;&#x1F1F7; - &copy; 2020</a href="https://github.com/brankohbk">
+    <footer class="bg-orange text-white text-center p-3 sticky">
+      <a href="https://github.com/brankohbk" target="_blank">Branko Haberkon - &#x1F1E6;&#x1F1F7; - &copy; 2020</a href="https://github.com/brankohbk">
   </footer>
-
+  
 
 
 
@@ -114,10 +68,12 @@
       </div>
     </div>
   </div>
-
+  
+</div>
   <script src="js/jquery-3.3.1.slim.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <!-- <script src="js/vue.js"></script> -->
   <script src="js/vue.min.js"></script>
   <script src="js/main.js"></script>
 </body>

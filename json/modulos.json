@@ -1,0 +1,25 @@
+{
+  "modulos": [{
+      "nombre": ".objetos",
+      "imagen": "background-image: url('../img/caratulas/objetos.png');",
+      "titulo": "Objetos.",
+      "detalle": "Instanciar objetos desde un constructor, e interactuar con ellos",
+      "url": "./microsites/objetos/index.html"
+    },
+    {
+      "nombre": ".canvas",
+      "imagen": "background-image: url('../img/caratulas/canvashtml5.png');",
+      "titulo": "HTML5 Canvas.",
+      "detalle": "Cómo utilizar el elemento HTML <canvas> para desarrollar un pequeño videojuego.",
+      "url": "./microsites/htmlcanvas/index.html"
+    },
+    {
+      "nombre": ".media queries",
+      "imagen": "background-image: url('../img/caratulas/mediaqueries.png');",
+      "titulo": "Media queries.",
+      "detalle": "Introducción al desarrollo responsive. Los @media se utilizan en CSS para consultar cómo es el medio que utiliza el usuario para interactuar con nuestro sitio.",
+      "url": "./microsites/mediaqueries/index.html"
+    }
+
+  ]
+}

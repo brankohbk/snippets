@@ -18,7 +18,8 @@ const app = new Vue({
   el:"#app",
   data:{
     qod:"",
-    modulos:[]
+    modulos:[],
+    search:''
   },
   methods:{},
   created(){
@@ -37,30 +38,41 @@ const app = new Vue({
     .then(data => {
       const index =random(0, data[0].quotes.length-1);
       app.qod=data[0].quotes[index];
-      app.modulos=data[1];
+      app.modulos=data[1].modulos;
 
     })
   },
-  computed:{},
+  computed:{
+    filtered:function(){
+ 
+      return this.modulos.filter(modulo => {
+        return modulo.titulo.toLowerCase().match(this.search.toLowerCase())
+        })
+
+
+    }
+  },
   components:{
     cards:{
       props:['array'],
       template:`
-      <div id="playfield" class="col-12 d-flex justify-content-around flex-wrap py-2">
-        <div v-for="modulo in array" class="flip-card my-2">
-          <div class="flip-card-inner">
-            <div class="flip-card-front" :style="modulo.imagen">
+      <div id="playfield" class="col-12 d-flex">
+      <transition-group name="fade" :duration="250" class="col-12 d-flex justify-content-around flex-wrap py-2">
+      <div v-for="modulo in array" v-bind:key="modulo" class="flip-card my-2">
+      <div class="flip-card-inner">
+      <div class="flip-card-front" :style="modulo.imagen">
               <h4>{{modulo.nombre}}</h4>
-            </div>
-            <div class="flip-card-back p-2">
+              </div>
+              <div class="flip-card-back p-2">
               <h1>{{modulo.titulo}}</h1>
               <p>{{modulo.detalle}}</p>
               <a :href='modulo.url' class="btn btn-purple mb-0" target="_blank" rel="noopener noreferrer">Ir al micrositio</a>
-            </div>
-          </div>
-        </div>
-      </div>       
-      `
+              </div>
+              </div>
+              </div>
+              </transition>  
+              </div>       
+              `
     },
     quote:{
       props:["quote"],

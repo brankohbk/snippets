@@ -57,10 +57,10 @@ main {
   box-shadow: inset #292b29 0px 1px 20px 0px;
 }
 
-footer a,
-footer a:hover,
-footer a:active,
-footer a:visited {
+a,
+a:hover,
+a:active,
+a:visited {
   text-decoration: none;
   color: inherit;
 }

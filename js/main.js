@@ -57,16 +57,19 @@ const app = new Vue({
       props:['array'],
       template:`
       <div id="playfield" class="col-12 d-flex">
-      <transition-group name="fade" :duration="250" class="col-12 d-flex justify-content-around flex-wrap py-2">
+      <transition-group name="fade" mode="out-in" :duration="250" class="col-12 d-flex justify-content-around flex-wrap py-2">
       <div v-for="modulo in array" v-bind:key="modulo" class="flip-card my-2">
-      <div class="flip-card-inner">
+      <div class="flip-card-inner d-flex">
       <div class="flip-card-front" :style="modulo.imagen">
               <h4>{{modulo.nombre}}</h4>
               </div>
-              <div class="flip-card-back p-2">
+              <div class="flip-card-back p-2 d-flex flex-column flex-grow-1">
               <h1>{{modulo.titulo}}</h1>
-              <p>{{modulo.detalle}}</p>
-              <a :href='modulo.url' class="btn btn-purple mb-0" target="_blank" rel="noopener noreferrer">Ir al micrositio</a>
+              <p class="">{{modulo.detalle}}</p>
+              <p class="my-3">By <a class="" target="_blank" :href='modulo.autorProfile'>{{modulo.autor}}</a></p>
+              <a :href='modulo.url' class="btn btn-purple" target="_blank" rel="noopener noreferrer">Ir al micrositio</a>
+
+
               </div>
               </div>
               </div>

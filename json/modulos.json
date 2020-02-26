@@ -1,25 +1,69 @@
 {
   "modulos": [{
-      "nombre": ".objetos",
-      "imagen": "background-image: url('./img/caratulas/objetos.png');",
-      "titulo": "Objetos.",
-      "detalle": "Instanciar objetos desde un constructor, e interactuar con ellos",
-      "url": "./microsites/objetos/index.html"
-    },
-    {
-      "nombre": ".canvas",
-      "imagen": "background-image: url('./img/caratulas/canvashtml5.png');",
-      "titulo": "HTML5 Canvas.",
-      "detalle": "Cómo utilizar el elemento HTML <canvas> para desarrollar un pequeño videojuego.",
-      "url": "./microsites/htmlcanvas/index.html"
+      "nombre": ".css Grid",
+      "imagen": "background-image: url('./img/caratulas/cssgrid.jpg');",
+      "titulo": "CSS grid",
+      "detalle": "'Dibujo' de un robot realizado con CSS Grid. Mediante JS y animaciones de CSS se le agregó interactividad.",
+      "url": "https://rodrigr.github.io/robogrid/",
+      "autor": "Rodrigo García Ribeiro",
+      "autorProfile": "https://github.com/rodrigr/"
     },
     {
       "nombre": ".media queries",
       "imagen": "background-image: url('./img/caratulas/mediaqueries.png');",
       "titulo": "Media queries.",
       "detalle": "Introducción al desarrollo responsive. Los @media se utilizan en CSS para consultar cómo es el medio que utiliza el usuario para interactuar con nuestro sitio.",
-      "url": "./microsites/mediaqueries/index.html"
+      "url": "./microsites/mediaqueries/index.html",
+      "autor": "Branko Haberkon",
+      "autorProfile": "https://github.com/brankohbk/"
+    },
+    {
+      "nombre": ".objetos",
+      "imagen": "background-image: url('./img/caratulas/objetos.png');",
+      "titulo": "Objetos en JS.",
+      "detalle": "Instanciar objetos desde un constructor, e interactuar con ellos.",
+      "url": "./microsites/objetos/index.html",
+      "autor": "Branko Haberkon",
+      "autorProfile": "https://github.com/brankohbk/"
+    },
+    {
+      "nombre": ".canvas",
+      "imagen": "background-image: url('./img/caratulas/canvashtml5.png');",
+      "titulo": "HTML5 Canvas.",
+      "detalle": "Cómo utilizar el elemento HTML <canvas> para desarrollar un pequeño videojuego.",
+      "url": "./microsites/htmlcanvas/index.html",
+      "autor": "Branko Haberkon",
+      "autorProfile": "https://github.com/brankohbk/"
+    },
+    {
+      "nombre": ".js DOM manipulation",
+      "imagen": "background-image: url('./img/caratulas/jsdom.png');",
+      "titulo": "Manipulación de DOM con JS",
+      "detalle": "Grid demo for Battleship project of MindHub Bootcamp with no frameworks. Pure JS",
+      "url": "https://rodrigr.github.io/vanilla-battleship-grid/grid.html",
+      "autor": "Rodrigo García Ribeiro",
+      "autorProfile": "https://github.com/rodrigr/"
+    },
+    {
+      "nombre": ".componentes de Vue.js",
+      "imagen": "background-image: url('./img/caratulas/vuejs.png');",
+      "titulo": "Vue.js: componentes",
+      "detalle": "Uso de componentes de Vue.js para mejorar la escalabilidad te los proyectos.",
+      "url": "https://rodrigr.github.io/vue-demo/",
+      "autor": "Rodrigo García Ribeiro",
+      "autorProfile": "https://github.com/rodrigr/"
+    },
+    {
+      "nombre": ".firebase chat",
+      "imagen": "background-image: url('./img/caratulas/firebase.jpg');",
+      "titulo": "Firebase login & database",
+      "detalle": "Ejemplo de implementación de login y uso de RealTime DataBase de Firebase.",
+      "url": "https://my-spa-9d6f0.firebaseapp.com/",
+      "autor": "Rodrigo García Ribeiro",
+      "autorProfile": "https://github.com/rodrigr/"
     }
+
+
 
   ]
 }

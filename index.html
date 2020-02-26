@@ -38,10 +38,11 @@
     <main class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
 
       <input class="col-8 mt-3" type="text" name="search" placeholder="Buscar por tema" v-model="search" id="">
-
-      <div class="col-8 text-center d-flex justify-content-center" id="empty-search" v-if="filtered.length==0">
-        <p class="text-light my-auto">No se encontró ningún ejemplo del tema buscado.</p>
-      </div>
+      <transition name="fade" mode="out-in">
+        <div class="col-8 text-center d-flex justify-content-center" id="empty-search" v-if="filtered.length==0">
+          <p class="text-light my-auto">No se encontró ningún ejemplo del tema buscado.</p>
+        </div>
+      </transition>
       <component is="cards" :array="filtered"></component>
       <component is="quote" :quote="qod"></component>
 

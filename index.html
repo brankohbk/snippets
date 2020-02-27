@@ -15,38 +15,44 @@
 
 <body>
   <div id="app" class="bg-light d-flex flex-column justify-content-between">
-    <nav class="navbar  navbar-light bg-orange navbar-expand-md">
+    <nav class="navbar navbar-light bg-orange navbar-expand-md">
       <a class="navbar-brand mr-4" href="">
         <img id="logo" class="d-none d-sm-inline" src="img/logo.png" alt="logo">
         <img id="logo" class="d-sm-none" src="img/isologo.png" alt="logo">
         <h1 class="text-white d-inline ">Snippets</h1>
-        <span class="d-none d-lg-inline"> | Ejemplos para explicaciones en clase.</span>
+        <span class="d-none d-xl-inline"> | Ejemplos para explicaciones en clase.</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse " id="navbarToggler">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <input class="form-control mr-sm-2 ml-auto my-2 my-lg-0" type="text" name="search" placeholder="Buscar por tema..." v-model="search" id="search">
+        <ul class="navbar-nav mt-2 mt-lg-0">
+          <li class="nav-item ">
+            <a class="nav-link " href="#" data-toggle="modal" data-target="#filtros">Filtros</a>
+          </li>
+          <li class="nav-item ">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#references">References</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <main class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
-
-      <input class="col-8 mt-3" type="text" name="search" placeholder="Buscar por tema" v-model="search" id="">
+    <main v-if="loaded" class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
+      <!-- <input class="col-8 mt-3" type="text" name="search" placeholder="Buscar por tema" v-model="search" id=""> -->
       <transition name="fade" mode="out-in">
         <div class="col-8 text-center d-flex justify-content-center" id="empty-search" v-if="filtered.length==0">
           <p class="text-light my-auto">No se encontró ningún ejemplo del tema buscado.</p>
         </div>
       </transition>
-      <component is="cards" :array="filtered"></component>
+      <component is="cards" :modulos="filtered"></component>
       <component is="quote" :quote="qod"></component>
-
     </main>
+    <div v-else class="m-0 flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+      <img src="img/loader.svg" alt="loading...">
+      <p>Cargando...</p>
+    </div>
 
     <footer class="bg-orange text-white text-center p-3 sticky">
       <a href="https://github.com/brankohbk" target="_blank">Branko Haberkon - &#x1F1E6;&#x1F1F7; - &copy; 2020</a href="https://github.com/brankohbk">
@@ -66,6 +72,27 @@
         </div>
         <div class="modal-body">
           <p>Catálogo con ejemplos para explicar temas puntuales en clases de frontend.</p>          
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="filtros" tabindex="-1" role="dialog" aria-labelledby="filtrosLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="filtrosLabel">Filtros</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <p>PRÓXIMAMENTE</p>
+          <p>Filtros por etiquetas</p>
 
         </div>
         <div class="modal-footer">

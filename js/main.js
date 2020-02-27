@@ -19,7 +19,8 @@ const app = new Vue({
   data:{
     qod:"",
     modulos:[],
-    search:''
+    search:'',
+    loaded:false,
   },
   methods:{},
   created(){
@@ -39,26 +40,24 @@ const app = new Vue({
       const index =random(0, data[0].quotes.length-1);
       app.qod=data[0].quotes[index];
       app.modulos=data[1].modulos;
-
+      // Forzar el spinner de carga.
+      setTimeout( () =>{ app.loaded=true },750);
     })
   },
   computed:{
-    filtered:function(){
- 
+    filtered:function(){ 
       return this.modulos.filter(modulo => {
         return modulo.titulo.toLowerCase().match(this.search.toLowerCase())
         })
-
-
     }
   },
   components:{
     cards:{
-      props:['array'],
+      props:['modulos'],
       template:`
       <div id="playfield" class="col-12 d-flex">
-      <transition-group name="fade" mode="out-in" :duration="250" class="col-12 d-flex justify-content-around flex-wrap py-2">
-      <div v-for="modulo in array" v-bind:key="modulo" class="flip-card my-2">
+      <transition-group name="fade" mode="out-in"  class="col-12 d-flex justify-content-around flex-wrap py-2">
+      <div v-for="(modulo,index) in modulos" v-bind:key="index" class="flip-card m-2">
       <div class="flip-card-inner d-flex">
       <div class="flip-card-front" :style="modulo.imagen">
               <h4>{{modulo.nombre}}</h4>
@@ -73,7 +72,7 @@ const app = new Vue({
               </div>
               </div>
               </div>
-              </transition>  
+              </transition-group>  
               </div>       
               `
     },

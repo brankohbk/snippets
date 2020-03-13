@@ -67,7 +67,7 @@ const app = new Vue({
               <div class="flip-card-back p-2 d-flex flex-column flex-grow-1">
               <h1>{{modulo.titulo}}</h1>
               <p class="">{{modulo.detalle}}</p>
-              <p class="my-3"><a class="" target="_blank" :href='modulo.repoUrl'>by {{modulo.autor}} <img src="../img/source-code.png" alt="Source code" class="source-code-logo" /> </a></p>
+              <p class="my-3"><a class="" target="_blank" :href='modulo.repoUrl'>by {{modulo.autor}} <img src="./img/source-code.png" alt="Source code" class="source-code-logo" /> </a></p>
               <a :href='modulo.demoUrl' class="btn btn-purple" target="_blank" rel="noopener noreferrer">Live Demo</a>
 
 

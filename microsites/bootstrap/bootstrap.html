@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Intro a Bootstrap</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Uncial+Antiqua|Courgette|Lobster|Bangers|Sigmar+One&display=swap" rel="stylesheet">
+
+  <style>
+    /* Podemos agregar estilos personalizados con un CSS propio LUEGO de importar Bootstrap. */
+    
+     :root {
+      --rojo: 255;
+      --verde: 115;
+      --azul: 3;
+      --colorFondo: var(--rojo), var(--verde), var(--azul);
+    }
+    
+    * {
+      font-family: 'Bangers', cursive;
+      font-size: larger;
+    }
+    
+    body {
+      background-color: rgba(var(--colorFondo), 0.445);
+    }
+    /* Se desaconseja modificar propiedades de las clases de Bootstrap 
+      En este caso se realizó de esta forma para demostrar que son clases de CSS
+      al igual que las que vimos en tareas anteriores.
+      Lo ideal sería crear clases con los nombres de la fuente y aplicarlas a
+      los elementos correspondientes.*/
+    
+    .col-6 {
+      font-family: 'Lobster', cursive;
+    }
+    
+    .col-md-4 {
+      font-family: 'Sigmar One', cursive;
+      font-weight: initial;
+    }
+    
+    .bg-danger {
+      font-family: 'Uncial Antiqua', cursive;
+    }
+    
+    .bg-purple {
+      background-color: purple;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="d-flex flex-wrap text-center p-5">
+    <div class="col-12 bg-purple text-warning p-4">12 columnas siempre</div>
+    <div class="col-6 bg-danger text-light p-4">6 columnas siempre</div>
+    <div class="col-6 bg-success text-light p-4">6 columnas siempre</div>
+    <div class="col-12 d-none d-md-block bg-warning text-primary border rounded-lg">DESAPARECE EN PANTALLAS pequeñas</div>
+    <div class="col-12 d-lg-none bg-danger text-warning border rounded-pill">DESAPARECE EN PANTALLAS GRANDES</div>
+    <div class="row col-12 p-0 m-0 my-3">
+      <div id="primero" class="col-sm-7 col-md-4 col-lg-2 bg-info p-4">asd</div>
+      <div id="segundo" class="col-sm-3 col-md-3 col-lg-7 bg-secondary p-4">asd</div>
+      <div id="tercero" class="col-sm-2 col-md-5 col-lg-3 bg-primary p-4">asd</div>
+    </div>
+    <div class="col-sm-12 col-md-4 bg-warning p-4"> 4 normalmente, 12 en pantallas pequeñas</div>
+    <div class="col-sm-12 col-md-4 bg-dark text-light p-4"> 4 normalmente, 12 en pantallas pequeñas</div>
+    <div class="col-sm-12 col-md-4 bg-light p-4"> 4 normalmente, 12 en pantallas pequeñas</div>
+  </main>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script>
+    // Se puede agregar código JS propio LUEGO  de la importacíon de Bootstrap
+    function colorChange() {
+      const wHeight = window.innerHeight * 100 / 255;
+      const wWidth = window.innerWidth * 100 / 255;
+      const ratio = wHeight / wWidth
+      const valorRojo = getComputedStyle(document.documentElement).getPropertyValue("--rojo")
+      const valorVerde = getComputedStyle(document.documentElement).getPropertyValue("--verde")
+      const valorAzul = getComputedStyle(document.documentElement).getPropertyValue("--azul")
+
+      document.documentElement.style.setProperty(
+        "--colorFondo",
+        `calc(var(--rojo) - ${ratio * wHeight}),
+           calc(var(--verde) * ${ratio *2}), 
+           calc(var(--azul) + ${wWidth ^ 2})`
+      )
+      document.querySelector("#primero").innerHTML = parseInt(valorRojo - ratio * wHeight)
+      document.querySelector("#segundo").innerHTML = parseInt(valorVerde * ratio * 2)
+      document.querySelector("#tercero").innerHTML = parseInt(valorAzul + wWidth ^ 2)
+    }
+    window.addEventListener('resize', colorChange);
+  </script>
+</body>
+
+</html>

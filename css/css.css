@@ -65,6 +65,16 @@ a:visited {
   height: 100px;
 }
 
+.modal-dialog {
+  max-width: 850px;
+}
+
+.github-logo-mini {
+  --size: 1.5em;
+  width: var(--size);
+  height: var(--size);
+}
+
 
 /* --------------- */
 
@@ -85,8 +95,29 @@ a:visited {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.flip-card .flip-card-inner {
+  animation: twister 1s ease-in-out;
+}
+
+.flip-card:nth-child(3n-2) .flip-card-inner:nth-child(3n-2) {
+  animation: twister 1.6s ease-in-out .7s;
+}
+
+.flip-card:nth-child(odd) .flip-card-inner:nth-child(odd) {
+  animation: twister 1.8s ease-in-out .3s;
+}
+
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
+}
+
+@keyframes twister {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(720deg);
+  }
 }
 
 .flip-card-front,
@@ -121,6 +152,12 @@ a:visited {
 
 .flip-card:hover h4 {
   display: none;
+}
+
+.flip-card .source-code-logo {
+  --size: 35px;
+  width: var(--size);
+  height: var(--size);
 }
 
 #empty-search {

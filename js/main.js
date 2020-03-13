@@ -18,6 +18,7 @@ const app = new Vue({
   el:"#app",
   data:{
     qod:"",
+    allQuotes:[],
     modulos:[],
     search:'',
     loaded:false,
@@ -38,6 +39,7 @@ const app = new Vue({
     fetchAll()
     .then(data => {
       const index =random(0, data[0].quotes.length-1);
+      app.allQuotes=data[0].quotes;
       app.qod=data[0].quotes[index];
       app.modulos=data[1].modulos;
       // Forzar el spinner de carga.
@@ -65,8 +67,8 @@ const app = new Vue({
               <div class="flip-card-back p-2 d-flex flex-column flex-grow-1">
               <h1>{{modulo.titulo}}</h1>
               <p class="">{{modulo.detalle}}</p>
-              <p class="my-3">By <a class="" target="_blank" :href='modulo.autorProfile'>{{modulo.autor}}</a></p>
-              <a :href='modulo.url' class="btn btn-purple" target="_blank" rel="noopener noreferrer">Ir al micrositio</a>
+              <p class="my-3"><a class="" target="_blank" :href='modulo.repoUrl'>by {{modulo.autor}} <img src="../img/source-code.png" alt="Source code" class="source-code-logo" /> </a></p>
+              <a :href='modulo.demoUrl' class="btn btn-purple" target="_blank" rel="noopener noreferrer">Live Demo</a>
 
 
               </div>

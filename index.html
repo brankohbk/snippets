@@ -8,8 +8,10 @@
   <meta name="author" content="Branko haberkon - brankoh@restpoint.com.ar">
   <title>Ejemplos</title>
   <link href="https://fonts.googleapis.com/css?family=Lemonada|Permanent+Marker|Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/css.css">
+  <link rel="stylesheet" href="css/profiles.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 
@@ -40,7 +42,6 @@
     </nav>
 
     <main v-if="loaded" class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
-      <!-- <input class="col-8 mt-3" type="text" name="search" placeholder="Buscar por tema" v-model="search" id=""> -->
       <transition name="fade" mode="out-in">
         <div class="col-8 text-center d-flex justify-content-center" id="empty-search" v-if="filtered.length==0">
           <p class="text-light my-auto">No se encontró ningún ejemplo del tema buscado.</p>
@@ -54,55 +55,62 @@
       <p>Cargando...</p>
     </div>
 
-    <footer class="bg-orange text-white text-center p-3 sticky">
-      <a href="https://github.com/brankohbk" target="_blank">Branko Haberkon - &#x1F1E6;&#x1F1F7; - &copy; 2020</a href="https://github.com/brankohbk">
-  </footer>
-  
+    <footer class="bg-orange text-white d-flex flex-wrap justify-content-around p-3 sticky">
+      <div class="col-12 col-sm-3 text-center">Made in &#x1F1E6;&#x1F1F7; by</div>
+      <div class="col-12 col-sm-6 text-center">
+        <a class="d-inline-block mx-3" href="https://github.com/brankohbk" target="_blank"><img class="github-logo-mini" src="./img/invertocat.png" alt="github">/brankohbk</a>
+        <span class="d-inline d-sm-none d-md-inline">|</span>
+        <a class="mx-3" href="https://github.com/rodrigr" target="_blank"><img class="github-logo-mini" src="./img/invertocat.png" alt="github">/rodrigr</a>
+      </div>
+      <div class="col-12 col-sm-3 text-center">&copy; 2020</div>
+    </footer>
 
 
 
-  <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="referencesLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="referencesLabel">References | <small>ver.20200223</small> </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Catálogo con ejemplos para explicar temas puntuales en clases de frontend.</p>          
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+    <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="referencesLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="referencesLabel">References | <small>ver.20200223</small> </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Catálogo con ejemplos para explicar temas puntuales en clases de frontend.</p>
+
+            <!-- end .modal-body -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="modal fade" id="filtros" tabindex="-1" role="dialog" aria-labelledby="filtrosLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="filtrosLabel">Filtros</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body text-center">
-          <p>PRÓXIMAMENTE</p>
-          <p>Filtros por etiquetas</p>
+    <div class="modal fade" id="filtros" tabindex="-1" role="dialog" aria-labelledby="filtrosLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="filtrosLabel">Filtros</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <p>PRÓXIMAMENTE</p>
+            <p>Filtros por etiquetas</p>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
-  
-</div>
   <script src="js/jquery-3.3.1.slim.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>

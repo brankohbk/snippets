@@ -1,3 +1,7 @@
+//Hi!
+console.log("%c Hello, fellow Dev! \n\n ( ͡° ͜ʖ ͡°)つ","color:orange;font-size:1.5em")
+console.log("%cArmamos este sitio aplicando la gran mayoría de ejemplos catalogados acá.\nCada ejemplo tiene una Live Demo y el link al Repositorio de GitHub para poder analizar el código fuente.\nEsperamos que te sirva de guía! \n\n","color:black;background-color: orange;font-size:1.15em")
+
 
 // Fixes unnecessary scrolling in mobile
 let vh, vw;
@@ -20,6 +24,7 @@ const app = new Vue({
     qod:"",
     allQuotes:[],
     modulos:[],
+    tags:[],
     search:'',
     loaded:false,
   },
@@ -42,6 +47,8 @@ const app = new Vue({
       app.allQuotes=data[0].quotes;
       app.qod=data[0].quotes[index];
       app.modulos=data[1].modulos;
+      data[1].modulos.forEach(modulo => {modulo.tags.forEach(tag =>{app.tags.includes(tag) ? null : app.tags.push(tag)})});
+      app.tags.sort((a,b) => { if(a>b) return  1 ; if(a<b) return -1 ; return  0 } )
       // Forzar el spinner de carga.
       setTimeout( () =>{ app.loaded=true },750);
     })
@@ -49,7 +56,7 @@ const app = new Vue({
   computed:{
     filtered:function(){ 
       return this.modulos.filter(modulo => {
-        return modulo.titulo.toLowerCase().match(this.search.toLowerCase())
+        return modulo.tags.some(tag => tag.toLowerCase().match(this.search.toLowerCase()))
         })
     }
   },
@@ -59,15 +66,15 @@ const app = new Vue({
       template:`
       <div id="playfield" class="col-12 d-flex">
       <transition-group name="fade" mode="out-in"  class="col-12 d-flex justify-content-around flex-wrap py-2">
-      <div v-for="(modulo,index) in modulos" v-bind:key="index" class="flip-card m-2">
+      <div v-for="(modulo,index) in modulos" v-bind:key="modulo.nombre" class="flip-card m-2">
       <div class="flip-card-inner d-flex">
       <div class="flip-card-front" :style="modulo.imagen">
               <h4>{{modulo.nombre}}</h4>
               </div>
-              <div class="flip-card-back p-2 d-flex flex-column flex-grow-1">
+              <div class="flip-card-back p-2 d-flex flex-column justify-content-around flex-grow-1">
               <h1>{{modulo.titulo}}</h1>
               <p class="">{{modulo.detalle}}</p>
-              <p class="my-3"><a class="" target="_blank" :href='modulo.repoUrl'>by {{modulo.autor}} <img src="./img/source-code.png" alt="Source code" class="source-code-logo" /> </a></p>
+              <p class=""><a class="" target="_blank" :href='modulo.repoUrl'>by {{modulo.autor}} <img src="./img/source-code.png" alt="Source code" class="source-code-logo" /> </a></p>
               <a :href='modulo.demoUrl' class="btn btn-purple" target="_blank" rel="noopener noreferrer">Live Demo</a>
 
 

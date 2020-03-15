@@ -14,20 +14,30 @@
       "imagen": "background-image: url('./img/caratulas/mediaqueries.png');",
       "titulo": "Media queries.",
       "detalle": "Introducción al desarrollo responsive. Los @media se utilizan en CSS para consultar cómo es el medio que utiliza el usuario para interactuar con nuestro sitio.",
-      "demoUrl": "./microsites/mediaqueries/index.html",
+      "demoUrl": "https://brankohbk.github.io/mediaqueries/",
       "autor": "Branko Haberkon",
-      "repoUrl": "https://github.com/brankohbk/",
-      "tags": ["css", "html"]
+      "repoUrl": "https://github.com/brankohbk/mediaqueries",
+      "tags": ["css", "html", "media", "queries", "query"]
+    },
+    {
+      "nombre": ".bootstrap",
+      "imagen": "background-image: url('./img/caratulas/bootstrap.jpg');",
+      "titulo": "Bootstrap.",
+      "detalle": "Ejemplo sumamente sencillo para demostrar el uso de Bootstrap para dar estilos y comportamientos responsivos a nuestros proyectos mediante clases de CSS.",
+      "demoUrl": "https://brankohbk.github.io/bootstrapexample/bootstrap.html",
+      "autor": "Branko Haberkon",
+      "repoUrl": "https://github.com/brankohbk/bootstrapexample",
+      "tags": ["css", "html", "bootstrap"]
     },
     {
       "nombre": ".objetos",
       "imagen": "background-image: url('./img/caratulas/objetos.png');",
       "titulo": "Objetos en JS.",
       "detalle": "Instanciar objetos desde un constructor, e interactuar con ellos.",
-      "demoUrl": "./microsites/objetos/index.html",
+      "demoUrl": "https://brankohbk.github.io/jsobjects/index.html",
       "autor": "Branko Haberkon",
       "repoUrl": "https://github.com/brankohbk/",
-      "tags": ["js", "javascript", "oop"]
+      "tags": ["js", "javascript", "oop", "objetos"]
     },
     {
       "nombre": ".canvas",
@@ -37,7 +47,7 @@
       "demoUrl": "https://brankohbk.github.io/htmlCanvas/",
       "autor": "Branko Haberkon",
       "repoUrl": "https://github.com/brankohbk/htmlCanvas/",
-      "tags": ["canvas", "html"]
+      "tags": ["canvas", "html", "js", "javascript", "game", "juego"]
     },
     {
       "nombre": ".js DOM manipulation",
@@ -47,7 +57,7 @@
       "demoUrl": "https://rodrigr.github.io/vanilla-battleship-grid/grid.html",
       "autor": "Rodrigo García Ribeiro",
       "repoUrl": "https://github.com/rodrigr/",
-      "tags": ["js", "javascript", "html"]
+      "tags": ["js", "javascript", "html", "dom"]
     },
     {
       "nombre": ".componentes de Vue.js",

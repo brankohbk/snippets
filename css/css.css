@@ -41,6 +41,7 @@ body,
   min-height: 100vh;
   max-height: 100%;
   min-height: calc(var(--vh, 1vh) * 100);
+  background-color: transparent;
 }
 
 #app {
@@ -79,9 +80,10 @@ a:visited {
 /* --------------- */
 
 .flip-card {
+  --flip-card-size: 300px;
+  width: var(--flip-card-size);
+  height: var(--flip-card-size);
   background-color: transparent;
-  width: 300px;
-  height: 300px;
   perspective: 1000px;
 }
 
@@ -99,12 +101,16 @@ a:visited {
   animation: twister 1s ease-in-out;
 }
 
-.flip-card:nth-child(3n-2) .flip-card-inner:nth-child(3n-2) {
-  animation: twister 1.6s ease-in-out .7s;
-}
-
 .flip-card:nth-child(odd) .flip-card-inner:nth-child(odd) {
   animation: twister 1.8s ease-in-out .3s;
+}
+
+.flip-card:nth-child(3n-2) .flip-card-inner:nth-child(3n-2) {
+  animation: twister 1.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) .8s;
+}
+
+.flip-card:nth-child(4th) .flip-card-inner:nth-child(4th) {
+  animation: twister 6s cubic-bezier(0.68, -0.55, 0.265, 1.55) .8s;
 }
 
 .flip-card:hover .flip-card-inner {

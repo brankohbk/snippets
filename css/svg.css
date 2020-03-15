@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+#wrapper {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+}
+
+#close-tag {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.group image {
+  cursor: pointer;
+}
+
+.polygon {
+  stroke: white;
+  stroke-width: 10;
+}
+
+#html polygon {
+  fill: #e44D26;
+}
+
+#css polygon {
+  fill: #3c99dc;
+}
+
+#js polygon {
+  fill: #f0db4f;
+}

@@ -1,7 +1,5 @@
 /* ===== ABOUT PAGE ===== */
 
-
-/* 
 .team-item {
   padding: 35px;
   padding-right: 0;
@@ -52,6 +50,7 @@
   width: calc(100% - 70px);
   margin-left: 70px;
   overflow: hidden;
+  transition: all .7s;
 }
 
 .team-item .img-holder img {
@@ -66,6 +65,7 @@
 .team-item:hover .img-holder img {
   -webkit-transform: scale(1);
   transform: scale(1);
+  /* transform: rotatex(180deg); */
 }
 
 .team-item .socials {
@@ -141,4 +141,4 @@ h5 {
 
 .mb-30 {
   margin-bottom: 30px;
-} */
+}

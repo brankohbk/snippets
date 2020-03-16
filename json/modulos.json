@@ -36,7 +36,7 @@
       "detalle": "Instanciar objetos desde un constructor, e interactuar con ellos.",
       "demoUrl": "https://brankohbk.github.io/jsobjects/index.html",
       "autor": "Branko Haberkon",
-      "repoUrl": "https://github.com/brankohbk/",
+      "repoUrl": "https://github.com/brankohbk/jsobjects",
       "tags": ["js", "javascript", "oop", "objetos"]
     },
     {

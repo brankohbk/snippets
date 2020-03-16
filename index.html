@@ -36,7 +36,7 @@
             <a class="nav-link " href="#" data-toggle="modal" data-target="#filtros">Filtros</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#references">References</a>
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#references">Acerca</a>
           </li>
         </ul>
       </div>
@@ -73,21 +73,81 @@
 
 
     <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="referencesLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="referencesLabel">References | <small>ver.20200223</small> </h5>
+      <div class="modal-dialog modal-lg modal-notify danger " role="document">
+        <div class="modal-content bg-orange">
+          <div class="modal-header bg-orange">
+            <h5 class="modal-title" id="referencesLabel">Acerca de este sitio y de los autores | <small>ver.20200315</small> </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <p>Catálogo con ejemplos para explicar temas puntuales en clases de frontend.</p>
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="section-title title-left text-center text-lg-left">
+                    <p>Realizamos este catálogo para que los alumnos de Mindhub tengan de forma accesible una fuente de inspiración y ejemplos de código que les van a servir, no solo para cumplir con las tareas del curso, si no que también para aplicar en
+                      proyectos futuros.
+                    </p>
+                    <p>Utilizamos Bootstrap, componentes de Vue.js, Vanilla JS, CSS3 y HTML5 aprovechando las últimas actualizaciones de estos lenguajes (funciones de orden superior, funciones asíncronas, dibujo de polígonos en SVG y canvas, custom properties
+                      de CSS, etiquetas semánticas, etc)</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-12 mb-1 text-center text-uppercase f-permanent-marker">
+                  ¡Sigamos en contacto!
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-lg-6 mb-30">
+                  <div class="team-item">
+                    <div class="mb-30 position-relative d-flex align-items-center">
+                      <span class="socials d-inline-block">
+                      <a href="#" class="zmdi zmdi-facebook"></a>
+                      <a href="#" class="zmdi zmdi-twitter"></a>
+                      <a href="#" class="zmdi zmdi-google"></a>
+                      <a href="#" class="zmdi zmdi-instagram"></a>
+                    </span>
+                      <span class="img-holder d-inline-block">
+                      <img src="https://github.com/rodrigr.png" alt="Team">
+                    </span>
+                    </div>
+                    <div class="team-content">
+                      <h5 class="mb-2">Rodrigo García Ribeiro</h5>
+                      <p class="text-uppercase mb-0">Senior Fullstack Developer</p>
+                      <p class="text-uppercase mb-0">& mentor at Mindhub</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-30">
+                  <div class="team-item">
+                    <div class="mb-30 position-relative d-flex align-items-center">
+                      <span class="socials d-inline-block">
+                      <a href="https://www.linkedin.com/in/branko-haberkon/" target="_blank" class="zmdi zmdi-linkedin"></a>
+                                            <a href="https://www.github.com/brankohbk/" target="_blank" class="zmdi zmdi-github"></a>
+                                            <a href="https://www.restpoint.com.ar/" target="_blank" class="zmdi zmdi-globe"></a>
+                                            <a href="https://www.instagram.com/restpointar/" target="_blank" class="zmdi zmdi-instagram"></a>
+                                          </span>
+                      <span class="img-holder d-inline-block">
+                      <img src="https://github.com/brankohbk.png" alt="Team">
+                                        </span>
+                    </div>
+                    <div class="team-content">
+                      <h5 class="mb-2">Branko Haberkon</h5>
+                      <p class="text-uppercase mb-0">FullStack Developer.</p>
+                      <p class="text-uppercase mb-0">Frontend mentor at Mindhub</p>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <!-- end .modal-body -->
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-purple" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>
@@ -126,8 +186,8 @@
   <script src="js/jquery-3.3.1.slim.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/vue.js"></script>
-  <!-- <script src="js/vue.min.js"></script> -->
+  <!-- <script src="js/vue.js"></script> -->
+  <script src="js/vue.min.js"></script>
   <script src="js/main.js"></script>
   <!-- <script src="js/Card.js"></script>
   <script src="js/svg.js"></script> -->

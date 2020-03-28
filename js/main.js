@@ -31,23 +31,36 @@ const app = new Vue({
   methods:{},
   created(){
 
-    async function fetchAll(){
-      let resQuotes = await fetch("./json/quotes.json");
-      let jsonQuotes = await resQuotes.json();
+    // async function fetchAll(){
+    //   let resQuotes = await fetch("./json/quotes.json");
+    //   let jsonQuotes = await resQuotes.json();
 
-      let resModulos = await fetch("./json/modulos.json");
-      let jsonModulos = await resModulos.json();
+    //   let resModulos = await fetch("./json/modulos.json");
+    //   let jsonModulos = await resModulos.json();
       
-      return [jsonQuotes,jsonModulos]
-    }
+    //   return [jsonQuotes,jsonModulos]
+    // }
+
+    async function fetchAll(){
+      let result = {quotes:[],modulos:[]}
+      await db.collection('quotes').get().then(snapshot =>{
+        snapshot.docs.forEach(doc=> result.quotes.push(doc.data()))
+      })     
+      await db.collection('modulos').get().then(snapshot =>{
+        snapshot.docs.forEach(doc=> result.modulos.push(doc.data()))
+      })
+
+      return result;
+    } 
 
     fetchAll()
     .then(data => {
-      const index =random(0, data[0].quotes.length-1);
-      app.allQuotes=data[0].quotes;
-      app.qod=data[0].quotes[index];
-      app.modulos=data[1].modulos;
-      data[1].modulos.forEach(modulo => {modulo.tags.forEach(tag =>{app.tags.includes(tag) ? null : app.tags.push(tag)})});
+      console.log(data)
+      const index =random(0, data.quotes.length-1);
+      app.allQuotes=data.quotes;
+      app.qod=data.quotes[index];
+      app.modulos=data.modulos;
+      data.modulos.forEach(modulo => {modulo.tags.forEach(tag =>{app.tags.includes(tag) ? null : app.tags.push(tag)})});
       app.tags.sort((a,b) => { if(a>b) return  1 ; if(a<b) return -1 ; return  0 } )
       // Forzar el spinner de carga.
       setTimeout( () =>{ app.loaded=true },750);

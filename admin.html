@@ -33,9 +33,6 @@
         <input class="form-control mr-sm-2 ml-auto my-2 my-lg-0" type="text" name="search" placeholder="Buscar por tema..." v-model="search" id="search">
         <ul class="navbar-nav mt-2 mt-lg-0">
           <li class="nav-item ">
-            <a class="nav-link " href="#" data-toggle="modal" data-target="#filtros">Filtros</a>
-          </li>
-          <li class="nav-item ">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#references">Acerca</a>
           </li>
         </ul>
@@ -153,48 +150,16 @@
       </div>
     </div>
 
-    <div class="modal fade" id="filtros" tabindex="-1" role="dialog" aria-labelledby="filtrosLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="filtrosLabel">Filtros</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body text-center">
-            <p>PRÓXIMAMENTE</p>
-            <p>Filtros por etiquetas</p>
-            <div class="form-group">
-              <template v-for="tag in tags">
-                <label class="m-2">
-                  <input type="checkbox" name="tag" :id="tag" :value="tag"> {{tag}} 
-                </label>
-              </template>
 
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-purple" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div>
-
-  <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
-  <script src="js/fb.js"></script>
   <script src="js/jquery-3.3.1.slim.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <!-- <script src="js/vue.js"></script> -->
   <script src="js/vue.min.js"></script>
-  <script src="js/main.js"></script>
-  <!-- <script src="js/Card.js"></script>
-  <script src="js/svg.js"></script> -->
+  <!-- <script src="js/main.js"></script> -->
+
 </body>
 
 </html>

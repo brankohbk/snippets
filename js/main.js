@@ -27,27 +27,70 @@ const app = new Vue({
     search:'',
     loaded:false,
   },
-  methods:{},
+  methods:{    
+    beforeEnter: function (el) {
+    el.style.opacity = 0
+    el.style.height = 0
+  },
+  enter: function (el, done) {
+    var delay = el.dataset.index * 150
+    setTimeout(function () {
+      Velocity(
+        el,
+        { opacity: 1, height: '1.6em' },
+        { complete: done }
+      )
+    }, delay)
+  },
+  leave: function (el, done) {
+    var delay = el.dataset.index * 150
+    setTimeout(function () {
+      Velocity(
+        el,
+        { opacity: 0, height: 0 },
+        { complete: done }
+      )
+    }, delay)
+  }},
   created(){
 
-    db.collection('quotes').get()
-    .then(snapshot =>{
-      const quotes=[];
-      snapshot.docs.forEach(doc=> quotes.push(doc.data()));
-      const index =random(0, quotes.length-1);
-      app.qod=quotes[index];
+    async function fetchQuotes(){
+      let resQuotes = await fetch("./json/quotes.json");
+      let jsonQuotes = await resQuotes.json();
+      const index =random(0, jsonQuotes.quotes.length-1);
+      app.qod=jsonQuotes.quotes[index];
       app.loaded=true;
-    })     
+    }
+
+    fetchQuotes();
 
     db.collection('modulos').onSnapshot(snapshot =>{
-      const modulos=[];
-      snapshot.docs.forEach(doc=> modulos.push(doc.data()))
-      app.modulos=modulos;
-      modulos.forEach(modulo => {modulo.tags.forEach(tag =>{app.tags.includes(tag) ? null : app.tags.push(tag)})});
+      let changes = snapshot.docChanges();
+      changes.forEach(change =>{
+        if(change.type==='added'){app.modulos.push(change.doc.data())}
+        if(change.type==='removed'){app.modulos.splice(app.modulos.indexOf(change.doc.data()),1)}});
+      app.modulos.forEach(modulo => {modulo.tags.forEach(tag =>{app.tags.includes(tag) ? null : app.tags.push(tag)})});
       app.tags.sort((a,b) => { if(a>b) return  1 ; if(a<b) return -1 ; return  0 } );
     })
 
   },
+  // mounted() {
+    // Get your items and set all to hidden
+    // if (this.modulos) {
+    //     this.items = JSON.parse(localStorage.getItem("items"))
+    //                  .map(item => item.isVisible = false);
+    // }
+
+    // Loop through and show the tasks
+    // for(let i=1; i<=this.items.length; i++){
+        // Where 300 is milliseconds to delay
+    //     let delay = i * 300;
+
+    //     setTimeout(function(){
+    //         this.items[i].isVisible = true;
+    //     }.bind(this), delay);
+    // }
+// },
   computed:{
     filtered:function(){ 
       return this.modulos.filter(modulo => {
@@ -60,11 +103,11 @@ const app = new Vue({
       props:['modulos'],
       template:`
       <div id="playfield" class="col-12 d-flex">
-      <transition-group name="fade" mode="out-in"  class="col-12 d-flex justify-content-around flex-wrap py-2">
+      <transition-group mode="out-in" class="col-12 d-flex justify-content-around flex-wrap py-2" name="fade">
       <div v-for="(modulo,index) in modulos" v-bind:key="modulo.nombre" class="flip-card m-2">
       <div class="flip-card-inner d-flex">
       <div class="flip-card-front" :style="modulo.imagen">
-              <h4>{{modulo.nombre}}</h4>
+              <h4>{{modulo.nombre}} </h4>
               </div>
               <div class="flip-card-back p-2 d-flex flex-column justify-content-around flex-grow-1">
               <h1>{{modulo.titulo}}</h1>

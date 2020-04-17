@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/css.css">
   <link rel="stylesheet" href="css/profiles.css">
+  <link rel="stylesheet" href="css/admin.css">
   <!-- <link rel="stylesheet" href="css/svg.css"> -->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
@@ -30,31 +31,107 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarToggler">
-        <input class="form-control mr-sm-2 ml-auto my-2 my-lg-0" type="text" name="search" placeholder="Buscar por tema..." v-model="search" id="search">
-        <ul class="navbar-nav mt-2 mt-lg-0">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           <li class="nav-item ">
             <a class="nav-link" href="#" data-toggle="modal" data-target="#references">Acerca</a>
+          </li>
+          <li v-show="loggedIn" class="nav-item">
+            <a class="nav-link" href="#" id="logout">Logout</a>
           </li>
         </ul>
       </div>
     </nav>
 
-    <main v-if="loaded" class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
-      <!-- <div id="wrapper"></div> -->
+    <main class="m-0 flex-grow-1 d-flex flex-wrap align-items-center justify-content-center">
 
-      <transition name="fade" id="ejemplos" mode="out-in">
-        <div class="col-8 text-center d-flex justify-content-center" id="empty-search" v-if="filtered.length==0">
-          <p class="text-light my-auto">No se encontró ningún ejemplo del tema buscado.</p>
+      <div v-show="!loggedIn" class="container logged-out">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header">Login</div>
+              <div class="card-body">
+                <form id="login-form">
+                  <div class="form-group row">
+                    <label for="email_address" class="col-md-4 col-form-label text-md-right">E-mail</label>
+                    <div class="col-md-6">
+                      <input type="text" id="login-email" class="form-control" name="email-address" required autofocus>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                    <div class="col-md-6">
+                      <input type="password" id="login-password" class="form-control" name="password" required>
+                    </div>
+                  </div>
+
+
+
+                  <div class="col-md-6 offset-md-4">
+                    <button type="submit" class="btn btn-primary">
+                                    Iniciar sesión
+                                </button>
+                    <a href="#" class="btn btn-link">
+                                    Forgot Your Password?
+                                </a>
+                    <span class="loading"></span>
+                    <p class="error pink-text center-align"></p>
+                  </div>
+              </div>
+              </form>
+            </div>
+          </div>
         </div>
-      </transition>
-      <component is="cards" :modulos="filtered"></component>
-      <component is="quote" :quote="qod"></component>
+      </div>
+
+      <div v-if="loggedIn" class="col-11">
+        <div class="row my-3">
+          <button class="btn btn-purple" data-toggle="modal" data-target="#altaModulo">Agregar módulo</button>
+        </div>
+        <div id="table-wrapper" class="row">
+          <table id="tabla-modulos" class="table table-sm table-light table-hover table-striped">
+            <thead>
+              <tr class="bg-orange">
+                <th scope="col">#</th>
+                <th scope="col">Nombre frontcard</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Demo URL </th>
+                <th scope="col">Detalle</th>
+                <th scope="col">Ruta Imagen</th>
+                <th scope="col">URL del repo</th>
+                <th scope="col">Tags</th>
+                <th scope="col">Autor</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="modulo,index in modulos">
+                <th scope="row"> {{index+1}}</th>
+                <td> {{modulo.nombre}} </td>
+                <td> {{modulo.titulo}} </td>
+                <td> {{modulo.demoUrl}} </td>
+                <td> {{modulo.detalle}} </td>
+                <td> {{modulo.imagen}} </td>
+                <td> {{modulo.repoUrl}} </td>
+                <td> {{modulo.tags}} </td>
+                <td> {{modulo.autor}} </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+
+
+
+      </div>
+
+
+
+
 
     </main>
-    <div v-else class="m-0 flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-      <img src="img/loader.svg" alt="loading...">
-      <p>Cargando...</p>
-    </div>
+
 
     <footer class="bg-orange text-white d-flex flex-wrap justify-content-around p-3 sticky">
       <div class="col-12 col-sm-3 text-center">Made in &#x1F1E6;&#x1F1F7; by</div>
@@ -66,8 +143,68 @@
       <div class="col-12 col-sm-3 text-center">&copy; 2020</div>
     </footer>
 
+    <!-- MODALS -->
+    <div class="modal fade" id="altaModulo" tabindex="-1" role="dialog" aria-labelledby="altaModuloLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-notify danger " role="document">
+        <div class="modal-content bg-orange">
+          <div class="modal-header bg-orange">
+            <h5 class="modal-title" id="altaModuloLabel">Alta de módulo nuevo</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="section-title title-left text-center text-lg-left">
+                    <form id="create-form">
+                      <label>Nombre frente
+                        <input type="text" id="nombre" placeholder=".nombre">
+                      </label>
+                      <label>Titulo dorso
+                        <input type="text" id="titulo" placeholder="Titulo del tema">
+                      </label>
+                      <label>auto
+                        <input type="text" id="autor" placeholder="John Doe">
+                      </label>
+                      <label>Descripcion
+                        <input type="textarea" id="detalle" placeholder="En este ejemplo vemos...." >
+                      </label>
+                      <label>Imagen
+                        <input type="text" id="imagen" value="background-image: url('./img/caratulas/vuejs.png');">
+                      </label>
+                      <label>URL a la DEMO
+                        <input type="text" id="demoUrl" placeholder="" value="https://brankohbk.github.io/jsobjects/index.html">
+                      </label>
+                      <label>URL del Repositorio
+                        <input type="text" id="repoUrl" placeholder=".nombre" value="https://github.com/brankohbk/jsobjects">
+                      </label>
+                      <label>Etiquetas
+                        <input type="" id="tags" placeholder=".nombre" value='vue,js,javascript'>
+                      </label>
+                      <div class="error">
+
+                      </div>
 
 
+                      <button class="btn btn-purple">Agregar módulo</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+            <!-- end .modal-body -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-purple" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="referencesLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-notify danger " role="document">
@@ -151,14 +288,22 @@
     </div>
 
 
-
+    <!-- END OF app -->
   </div>
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-storage.js"></script>
+
   <script src="js/jquery-3.3.1.slim.min.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/fb.js"></script>
   <!-- <script src="js/vue.js"></script> -->
   <script src="js/vue.min.js"></script>
-  <!-- <script src="js/main.js"></script> -->
+  <script src="js/adminVue.js"></script>
+  <script src="js/admin.js"></script>
 
 </body>
 

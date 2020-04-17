@@ -1,0 +1,18 @@
+.loading {
+  display: none;
+}
+
+#table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+
+/* #tabla-modulos {
+  width: 100%;
+} */
+
+#tabla-modulos th,
+td {
+  white-space: nowrap;
+}

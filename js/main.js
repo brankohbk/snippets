@@ -26,32 +26,10 @@ const app = new Vue({
     tags:[],
     search:'',
     loaded:false,
+    adminLoggedIn:false,
   },
   methods:{    
-    beforeEnter: function (el) {
-    el.style.opacity = 0
-    el.style.height = 0
-  },
-  enter: function (el, done) {
-    var delay = el.dataset.index * 150
-    setTimeout(function () {
-      Velocity(
-        el,
-        { opacity: 1, height: '1.6em' },
-        { complete: done }
-      )
-    }, delay)
-  },
-  leave: function (el, done) {
-    var delay = el.dataset.index * 150
-    setTimeout(function () {
-      Velocity(
-        el,
-        { opacity: 0, height: 0 },
-        { complete: done }
-      )
-    }, delay)
-  }},
+},
   created(){
 
     async function fetchQuotes(){
@@ -67,30 +45,17 @@ const app = new Vue({
     db.collection('modulos').onSnapshot(snapshot =>{
       let changes = snapshot.docChanges();
       changes.forEach(change =>{
-        if(change.type==='added'){app.modulos.push(change.doc.data())}
-        if(change.type==='removed'){app.modulos.splice(app.modulos.indexOf(change.doc.data()),1)}});
+        if(change.type==='added'){app.modulos.push(change.doc.data())        }
+        if(change.type==='removed'){
+          const quitar= app.modulos.filter(modulo=> modulo.nombre==change.doc.data().nombre)
+          app.modulos.splice(app.modulos.indexOf(quitar[0]),1)
+        }
+      });
       app.modulos.forEach(modulo => {modulo.tags.forEach(tag =>{app.tags.includes(tag) ? null : app.tags.push(tag)})});
       app.tags.sort((a,b) => { if(a>b) return  1 ; if(a<b) return -1 ; return  0 } );
     })
 
   },
-  // mounted() {
-    // Get your items and set all to hidden
-    // if (this.modulos) {
-    //     this.items = JSON.parse(localStorage.getItem("items"))
-    //                  .map(item => item.isVisible = false);
-    // }
-
-    // Loop through and show the tasks
-    // for(let i=1; i<=this.items.length; i++){
-        // Where 300 is milliseconds to delay
-    //     let delay = i * 300;
-
-    //     setTimeout(function(){
-    //         this.items[i].isVisible = true;
-    //     }.bind(this), delay);
-    // }
-// },
   computed:{
     filtered:function(){ 
       return this.modulos.filter(modulo => {

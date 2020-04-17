@@ -10,4 +10,8 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+    // References
+    const auth = firebase.auth();
+    const functions = firebase.functions();
+    const db = firebase.firestore();
+    const storage = firebase.storage();

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="author" content="Branko haberkon - brankoh@restpoint.com.ar">
-  <title>Ejemplos</title>
+  <title>Ejemplos ADMIN PANEL</title>
   <link href="https://fonts.googleapis.com/css?family=Lemonada|Permanent+Marker|Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -24,7 +24,7 @@
         <img id="logo" class="d-none d-sm-inline" src="img/logo.png" alt="logo">
         <img id="logo" class="d-sm-none" src="img/isologo.png" alt="logo">
         <h1 class="text-white d-inline ">Snippets</h1>
-        <span class="d-none d-xl-inline"> | Ejemplos para explicaciones en clase.</span>
+        <span class="d-none d-xl-inline"> | Panel de administración</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,9 +32,6 @@
 
       <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item ">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#references">Acerca</a>
-          </li>
           <li v-show="loggedIn" class="nav-item">
             <a class="nav-link" href="#" id="logout">Logout</a>
           </li>
@@ -89,15 +86,15 @@
           <button class="btn btn-purple" data-toggle="modal" data-target="#altaModulo">Agregar módulo</button>
         </div>
         <div id="table-wrapper" class="row">
-          <table id="tabla-modulos" class="table table-sm table-light table-hover table-striped">
+          <table id="tabla-modulos" class="table table-sm table-light table-hover table-striped m-0">
             <thead>
-              <tr class="bg-orange">
+              <tr class="bg-orange text-center">
                 <th scope="col">#</th>
                 <th scope="col">Nombre frontcard</th>
                 <th scope="col">Titulo</th>
                 <th scope="col">Demo URL </th>
                 <th scope="col">Detalle</th>
-                <th scope="col">Ruta Imagen</th>
+                <th scope="col">Imagen Carátula</th>
                 <th scope="col">URL del repo</th>
                 <th scope="col">Tags</th>
                 <th scope="col">Autor</th>
@@ -111,27 +108,21 @@
                 <td> {{modulo.titulo}} </td>
                 <td> {{modulo.demoUrl}} </td>
                 <td> {{modulo.detalle}} </td>
-                <td> {{modulo.imagen}} </td>
+                <td>
+                  <a target="_blank" :href=modulo.imagenURL v-tooltip:auto.hover.html="modulo.imagenTooltip">Ver original</a>
+                </td>
                 <td> {{modulo.repoUrl}} </td>
                 <td> {{modulo.tags}} </td>
                 <td> {{modulo.autor}} </td>
               </tr>
-
             </tbody>
           </table>
 
         </div>
 
-
-
       </div>
 
-
-
-
-
     </main>
-
 
     <footer class="bg-orange text-white d-flex flex-wrap justify-content-around p-3 sticky">
       <div class="col-12 col-sm-3 text-center">Made in &#x1F1E6;&#x1F1F7; by</div>
@@ -159,36 +150,63 @@
                 <div class="col-12">
                   <div class="section-title title-left text-center text-lg-left">
                     <form id="create-form">
-                      <label>Nombre frente
-                        <input type="text" id="nombre" placeholder=".nombre">
-                      </label>
-                      <label>Titulo dorso
-                        <input type="text" id="titulo" placeholder="Titulo del tema">
-                      </label>
-                      <label>auto
-                        <input type="text" id="autor" placeholder="John Doe">
-                      </label>
-                      <label>Descripcion
-                        <input type="textarea" id="detalle" placeholder="En este ejemplo vemos...." >
-                      </label>
-                      <label>Imagen
-                        <input type="text" id="imagen" value="background-image: url('./img/caratulas/vuejs.png');">
-                      </label>
-                      <label>URL a la DEMO
-                        <input type="text" id="demoUrl" placeholder="" value="https://brankohbk.github.io/jsobjects/index.html">
-                      </label>
-                      <label>URL del Repositorio
-                        <input type="text" id="repoUrl" placeholder=".nombre" value="https://github.com/brankohbk/jsobjects">
-                      </label>
-                      <label>Etiquetas
-                        <input type="" id="tags" placeholder=".nombre" value='vue,js,javascript'>
-                      </label>
-                      <div class="error">
+                      <div class="form-group">
+                        <div class="form-group">
+                          <label for="nombre">Nombre frente</label>
+                          <input class="form-control" type="text" id="nombre" placeholder=".nombre" value="">
+                        </div>
+                        <div class="form-group">
+                          <label for="titulo">Titulo dorso</label>
+                          <input class="form-control" type="text" id="titulo" placeholder="Titulo del tema" value="">
+                        </div>
+                        <div class="form-group">
+                          <label for="autor">Autor</label>
+                          <input class="form-control" type="text" id="autor" placeholder="John Doe" value="">
+                        </div>
+                        <div class="form-group">
+                          <label for="descripcion">Descripcion</label>
+                          <textarea name="msg" maxlength="140" rows="5" class="form-control" id="detalle" placeholder="En este ejemplo vemos...." value=""></textarea>
 
+                        </div>
+                        <div class="form-group">
+                          <label for="demoUrl">URL a la DEMO</label>
+                          <input class="form-control" type="text" id="demoUrl" placeholder="https://brankohbk.github.io/jsobjects/index.html">
+                        </div>
+                        <div class="form-group">
+                          <label for="repoUrl">URL del Repositorio</label>
+                          <input class="form-control" type="text" id="repoUrl" placeholder="https://github.com/brankohbk/jsobjects">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="tags">Etiquetas</label>
+                        <input class="form-control" type="" id="tags" placeholder='prueba,carga,datos'>
+                      </div>
+                      <div class="form group row">
+                        <div class="col-lg-3">
+                          <label for="subirImagen"></label>
+                          <div class="fileUpload btn btn-sm btn-secondary m-auto">
+                            <span>Subir imagen</span>
+                            <input class="upload" type="file" id="subirImagen" value="">
+                          </div>
+                        </div>
+                        <div class="row mt-1 col-lg-9">
+                          <div id="subidaProgreso" class="col-12">
+                            <div class="progress">
+                              <div class="bg-orange progress-bar progress-bar-striped progress-bar-animated text-dark">Esperando imagen para subir...</div>
+                            </div>
+                          </div>
+                          <div id="vistaPreviaSubida" class="col-12  m-auto">
+                            <img alt="vista previa" />
+                          </div>
+                        </div>
                       </div>
 
+                      <div class="error"></div>
 
-                      <button class="btn btn-purple">Agregar módulo</button>
+                      <div class="form-group my-3 text-right">
+                        <button id="aceptar" class="btn btn-purple" disabled>Agregar módulo</button>
+                        <span class="loading">Guardando...</span>
+                      </div>
                     </form>
                   </div>
                 </div>
@@ -200,88 +218,7 @@
             <!-- end .modal-body -->
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-purple" data-dismiss="modal">Cerrar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="references" tabindex="-1" role="dialog" aria-labelledby="referencesLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-notify danger " role="document">
-        <div class="modal-content bg-orange">
-          <div class="modal-header bg-orange">
-            <h5 class="modal-title" id="referencesLabel">Acerca de este sitio y de los autores | <small>ver.20200315</small> </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="container">
-              <div class="row">
-                <div class="col-12">
-                  <div class="section-title title-left text-center text-lg-left">
-                    <p>Realizamos este catálogo para que los alumnos de Mindhub tengan de forma accesible una fuente de inspiración y ejemplos de código que les van a servir, no solo para cumplir con las tareas del curso, si no que también para aplicar en
-                      proyectos futuros.
-                    </p>
-                    <p>Utilizamos Bootstrap, componentes de Vue.js, Vanilla JS, CSS3 y HTML5 aprovechando las últimas actualizaciones de estos lenguajes (funciones de orden superior, funciones asíncronas, dibujo de polígonos en SVG y canvas, custom properties
-                      de CSS, etiquetas semánticas, etc)</p>
-                  </div>
-                </div>
-              </div>
-              <div class="row justify-content-center">
-                <div class="col-12 mb-1 text-center text-uppercase f-permanent-marker">
-                  ¡Sigamos en contacto!
-                </div>
-              </div>
-              <div class="row justify-content-center">
-                <div class="col-lg-6 mb-30">
-                  <div class="team-item">
-                    <div class="mb-30 position-relative d-flex align-items-center">
-                      <span class="socials d-inline-block">
-                      <a href="#" class="zmdi zmdi-facebook"></a>
-                      <a href="#" class="zmdi zmdi-twitter"></a>
-                      <a href="#" class="zmdi zmdi-google"></a>
-                      <a href="#" class="zmdi zmdi-instagram"></a>
-                    </span>
-                      <span class="img-holder d-inline-block">
-                      <img src="https://github.com/rodrigr.png" alt="Team">
-                    </span>
-                    </div>
-                    <div class="team-content">
-                      <h5 class="mb-2">Rodrigo García Ribeiro</h5>
-                      <p class="text-uppercase mb-0">Senior Fullstack Developer</p>
-                      <p class="text-uppercase mb-0">& mentor at Mindhub</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-30">
-                  <div class="team-item">
-                    <div class="mb-30 position-relative d-flex align-items-center">
-                      <span class="socials d-inline-block">
-                      <a href="https://www.linkedin.com/in/branko-haberkon/" target="_blank" class="zmdi zmdi-linkedin"></a>
-                                            <a href="https://www.github.com/brankohbk/" target="_blank" class="zmdi zmdi-github"></a>
-                                            <a href="https://www.restpoint.com.ar/" target="_blank" class="zmdi zmdi-globe"></a>
-                                            <a href="https://www.instagram.com/restpointar/" target="_blank" class="zmdi zmdi-instagram"></a>
-                                          </span>
-                      <span class="img-holder d-inline-block">
-                      <img src="https://github.com/brankohbk.png" alt="Team">
-                                        </span>
-                    </div>
-                    <div class="team-content">
-                      <h5 class="mb-2">Branko Haberkon</h5>
-                      <p class="text-uppercase mb-0">FullStack Developer.</p>
-                      <p class="text-uppercase mb-0">Frontend mentor at Mindhub</p>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- end .modal-body -->
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-purple" data-dismiss="modal">Cerrar</button>
+            <!-- <button type="button" class="btn btn-purple" data-dismiss="modal">Cerrar</button> -->
           </div>
         </div>
       </div>
@@ -304,6 +241,18 @@
   <script src="js/vue.min.js"></script>
   <script src="js/adminVue.js"></script>
   <script src="js/admin.js"></script>
+  <!-- <script>
+    $(document).ready(function() {
+      $('[data-toggle="popover"]').popover({
+        trigger: 'hover',
+        html: true,
+        content: function() {
+          return '<img class="img-fluid" src="' + $(this).data('img') + '" />';
+        },
+        title: 'Toolbox'
+      })
+    });
+  </script> -->
 
 </body>
 

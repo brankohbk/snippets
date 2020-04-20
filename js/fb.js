@@ -15,3 +15,4 @@
     const functions = firebase.functions();
     const db = firebase.firestore();
     const storage = firebase.storage();
+    const storageRef = storage.ref();

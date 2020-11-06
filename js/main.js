@@ -42,7 +42,7 @@ const app = new Vue({
 
     fetchQuotes();
 
-    db.collection('modulos').onSnapshot(snapshot =>{
+    db.collection('modulos').orderBy('nombre').onSnapshot(snapshot =>{
       let changes = snapshot.docChanges();
       changes.forEach(change =>{
         if(change.type==='added'){app.modulos.push(change.doc.data())        }
